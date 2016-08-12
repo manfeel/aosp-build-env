@@ -8,14 +8,8 @@ MAINTAINER Manfeel "manfeel@foxmail.com"
 ENV LANG en_US.UTF-8
 RUN locale-gen $LANG
 
-# ENV DOCKER_ANDROID_LANG en_US
-# ENV DOCKER_ANDROID_DISPLAY_NAME manfeel-docker
-
 # Never ask for confirmations
 ENV DEBIAN_FRONTEND noninteractive
-
-# Update apt-get
-# RUN rm -rf /var/lib/apt/lists/*
 
 # Set sources to aliyun
 RUN echo 'deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted \n\
@@ -41,7 +35,6 @@ deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security multiverse \n\
 deb http://extras.ubuntu.com/ubuntu trusty main \n\
 deb-src http://extras.ubuntu.com/ubuntu trusty main' > /etc/apt/sources.list
  
-
 RUN apt-get update && apt-get install -y \
 	openjdk-7-jdk git-core gnupg flex bison gperf build-essential \
 	zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 \
@@ -51,7 +44,7 @@ RUN apt-get update && apt-get install -y \
 
 # Add build user account, values are set to default below
 ENV RUN_USER manfeel
-ENV RUN_UID 3188
+ENV RUN_UID 2318
 
 RUN id $RUN_USER || adduser --uid "$RUN_UID" \
     --gecos 'Build User' \
