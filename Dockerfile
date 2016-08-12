@@ -61,9 +61,9 @@ RUN id $RUN_USER || adduser --uid "$RUN_UID" \
 
 # Creating project directories prepared for build when running
 # `docker run`
-ENV PROJECT /android
-RUN mkdir $PROJECT
-RUN chown -R $RUN_USER:$RUN_USER $PROJECT
-WORKDIR $PROJECT
+ENV ANDROID /android
+RUN mkdir $ANDROID
+RUN chown -R $RUN_USER:$RUN_USER $ANDROID
+WORKDIR $ANDROID
 
 USER $RUN_USER
