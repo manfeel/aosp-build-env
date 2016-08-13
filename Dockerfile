@@ -12,28 +12,7 @@ RUN locale-gen $LANG
 ENV DEBIAN_FRONTEND noninteractive
 
 # Set sources to aliyun
-RUN echo 'deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted \n\
-deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted \n\
-deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted \n\
-deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted \n\
-deb http://mirrors.aliyun.com/ubuntu/ trusty universe \n\
-deb-src http://mirrors.aliyun.com/ubuntu/ trusty universe \n\
-deb http://mirrors.aliyun.com/ubuntu/ trusty-updates universe \n\
-deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates universe \n\
-deb http://mirrors.aliyun.com/ubuntu/ trusty multiverse \n\
-deb-src http://mirrors.aliyun.com/ubuntu/ trusty multiverse \n\
-deb http://mirrors.aliyun.com/ubuntu/ trusty-updates multiverse \n\
-deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates multiverse \n\
-deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse \n\
-deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse \n\
-deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted \n\
-deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted \n\
-deb http://mirrors.aliyun.com/ubuntu/ trusty-security universe \n\
-deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security universe \n\
-deb http://mirrors.aliyun.com/ubuntu/ trusty-security multiverse \n\
-deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security multiverse \n\
-deb http://extras.ubuntu.com/ubuntu trusty main \n\
-deb-src http://extras.ubuntu.com/ubuntu trusty main' > /etc/apt/sources.list
+COPY sources.list /etc/apt/
  
 RUN apt-get update && apt-get install -y \
 	openjdk-7-jdk git-core gnupg flex bison gperf build-essential \
