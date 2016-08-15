@@ -11,11 +11,16 @@ RUN locale-gen $LANG
 # Never ask for confirmations
 ENV DEBIAN_FRONTEND noninteractive
 
+# set root password
+RUN echo "root:root" | chpasswd
+
 # Set sources to aliyun
 COPY sources.list /etc/apt/
- 
-RUN apt-get update && apt-get remove vim-common && apt-get install -y \
-	vim openjdk-7-jdk git-core gnupg flex bison gperf build-essential \
+
+RUN apt-get remove -y vim-common && apt-get install -y vim
+
+RUN apt-get update && apt-get install -y \
+	openjdk-7-jdk git-core gnupg flex bison gperf build-essential \
 	zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 \
 	lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache \
 	libgl1-mesa-dev libxml2-utils xsltproc unzip \
